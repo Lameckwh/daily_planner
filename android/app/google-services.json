@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981504453153",
+    "project_id": "eco-tourism-3129a",
+    "storage_bucket": "eco-tourism-3129a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981504453153:android:da85089528566ea3c91160",
+        "android_client_info": {
+          "package_name": "com.example.eco_tourism"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIv03soh1PEjujl50jHz7G2_i-thecreI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
