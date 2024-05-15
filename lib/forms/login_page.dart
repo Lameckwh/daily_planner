@@ -1,6 +1,6 @@
+import 'package:eco_tourism/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../screens/navbar.dart';
 import 'register_page.dart';
 import '../user_auth/firebase_auth_implementation/firebase_auth_services.dart';
 
@@ -12,7 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String? _errorMessage;
   bool _isLoading = false;
@@ -80,15 +80,15 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TextField(
-          controller: _usernameController,
+          controller: _emailController,
           decoration: InputDecoration(
-              hintText: "Username",
+              hintText: "Email",
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(18),
                   borderSide: BorderSide.none),
               fillColor: const Color.fromRGBO(255, 255, 255, 1),
               filled: true,
-              prefixIcon: const Icon(Icons.person)),
+              prefixIcon: const Icon(Icons.email)),
         ),
         const SizedBox(height: 10),
         TextField(
@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _login() async {
-    final String username = _usernameController.text.trim();
+    final String email = _emailController.text.trim();
     final String password = _passwordController.text.trim();
 
     setState(() {
@@ -162,9 +162,9 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-      // Sign in with username and password using FirebaseAuthService
-      await FirebaseAuthService().signInWithUsernameAndPassword(
-        username,
+      // Sign in with email and password using FirebaseAuthService
+      await FirebaseAuthService().signInWithEmailAndPassword(
+        email,
         password,
       );
 
@@ -174,13 +174,13 @@ class _LoginPageState extends State<LoginPage> {
         // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
-          builder: (context) => const NavBar(),
+          builder: (context) => const HomePage(),
         ),
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
         if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-          _errorMessage = 'Invalid username or password.';
+          _errorMessage = 'Invalid email or password.';
         } else {
           _errorMessage = e.message;
         }

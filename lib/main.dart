@@ -1,11 +1,10 @@
+import 'package:eco_tourism/forms/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // Import the generated file
 import 'firebase_options.dart';
-
-import 'screens/navbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ECO Tourism',
+      title: 'Daily Planner',
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: true,
@@ -46,8 +45,8 @@ class MyApp extends StatelessWidget {
         ).copyWith(background: const Color.fromRGBO(238, 238, 238, 1)),
       ),
       home: showWelcomePage
-          ? const WelcomePage(title: 'Eco Tourism')
-          : const NavBar(),
+          ? const WelcomePage(title: 'Daily Planner')
+          : const LoginPage(),
     );
   }
 }
@@ -64,11 +63,7 @@ class WelcomePage extends StatelessWidget {
         children: [
           Container(
             decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                    "images/bg_image.jpg"), // Change the path to your image asset
-                fit: BoxFit.cover,
-              ),
+              color: Colors.grey,
             ),
           ),
           Container(
@@ -86,7 +81,7 @@ class WelcomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Malawi, The Warm Heart of Africa",
+                        "The Daily Planner App",
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w600,
@@ -98,7 +93,7 @@ class WelcomePage extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        'This app will guide you to reach your destination and enjoy the scenery view of different parts of Malawi. Starting from the experience Malawian cultural dances hotels and cultural visits etc.',
+                        'This app will guide throughtout your daily activities',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -125,7 +120,8 @@ class WelcomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const NavBar()),
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

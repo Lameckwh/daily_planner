@@ -221,7 +221,7 @@ class _SignupPageState extends State<SignupPage> {
 
     try {
       // Register user using FirebaseAuthService
-      await FirebaseAuthService().signUpWithUsernameAndPassword(
+      await FirebaseAuthService().signUpWithEmailAndPassword(
         username,
         email,
         password,
