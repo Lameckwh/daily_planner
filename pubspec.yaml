@@ -36,12 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_core:
   firebase_auth:
-  cloud_firestore:
-  firebase_storage:
 
-  font_awesome_flutter:
-  hive:
-  hive_flutter:
   shared_preferences:
   path_provider:
   path:
@@ -49,12 +44,7 @@ dependencies:
   logger:
   intl:
   get:
-  carousel_slider:
-  image_card:
-  image_picker:
-  flutter_rating_bar:
-  cached_network_image:
-  mailer:
+  cloud_firestore: ^4.17.3
 
 dev_dependencies:
   flutter_test:
